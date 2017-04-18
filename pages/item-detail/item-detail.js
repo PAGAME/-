@@ -12,7 +12,7 @@ Page({
 
   onLoad: function (options) {
     var that = this
-    console.log(`:flag work-detail`)
+    console.log(`:flag ${api.PAGE_ITEM}`)
 
     app.getSystemInfo(function(res) {
       that.setData({

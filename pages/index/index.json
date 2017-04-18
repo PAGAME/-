@@ -1,1 +1,7 @@
-{}
+{
+    "backgroundTextStyle": "white",
+    "navigationBarBackgroundColor": "#c6ae9b",
+    "navigationBarTitleText": "桃花小集",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+}

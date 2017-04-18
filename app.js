@@ -6,6 +6,8 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
   },
+
+  // login and get userInfo in callback
   getUserInfo:function(cb){
     var that = this
     if(this.globalData.userInfo){
@@ -24,6 +26,8 @@ App({
       })
     }
   },
+
+  // 
   getSystemInfo: function (cb) {
     var that = this
     if(that.globalData.systemInfo){
@@ -37,6 +41,8 @@ App({
       })
     }
   },
+
+  // userInfo cache
   globalData:{
     userInfo:null
   }

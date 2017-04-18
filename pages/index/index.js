@@ -1,32 +1,54 @@
 var api = require('../../utils/api.js')
 var app = getApp()
+
+let pageData = {
+  systemInfo: {},
+  api: api,
+  navbar: ['推荐', '商品', '新闻'],
+  currentNavbar: '0',
+  // in swiper view
+  // item.pic: the pic url
+  swipers: [],
+  // hot list
+  list: [],
+  hot_last_id: 0,
+  // latest list
+  items_list: [],
+  items_last_id: 0,
+}
+
 Page({
-  data: {
-    systemInfo: {},
-    _api: {},
-    navbar: ['商品', '新作', '展览'],
-    currentNavbar: '0',
-    swipers: [],
-    list: [],
-    hot_last_id: 0,
-    latest_list: [],
-    latest_last_id: 0
-  },
+
+  data: pageData,
 
   onLoad () {
     var that = this
+
     app.getSystemInfo(function(res) {
       that.setData({
         systemInfo: res
       })
-    })
 
-    that.setData({
-      _api: api
+      // SDKVersion errMsg language model
+      // pixelRatio platform screenHeight screenWidth
+      // system version windowHeight windowWidth
+      console.log(";; system info")
+      console.log(res)
     })
 
     this.getSwipers()
     this.pullUpLoad()
+
+    // api.get("http://45.77.16.172/wechat")
+    //   .then(res => {
+    //     console.log("asf")
+    //     console.log(res.data)
+    //   })
+
+    // set data
+    // this.setData({
+    //   name: "asdf"
+    // })
   },
 
   /**
@@ -38,29 +60,36 @@ Page({
          this.setData({
            swipers: res.data.ads
          })
+
+         console.log(";; swipers data")
+         console.log(res)
        })
    },
 
   /**
    * 点击跳转详情页
    */
-  onItemClick (e) {
-    var targetUrl = api.PAGE_WORK
-    if (e.currentTarget.dataset.rowId != null)
-      targetUrl = targetUrl + '?rowId=' + e.currentTarget.dataset.rowId
-    wx.navigateTo({
-      url: targetUrl
-    })
+  itemClickCallback (e) {
+    if (e.currentTarget.dataset.rowId != null) {
+      var targetUrl = api.PAGE_ITEM + '?rowId=' + e.currentTarget.dataset.rowId
+      console.log(":flag " + targetUrl)
+      wx.navigateTo({
+        url: targetUrl
+      })
+    }
+    else {
+      console.error("item click callback on error target")
+    }
   },
 
   /**
    * 切换 navbar
    */
-  swichNav (e) {
+  switchNav (e) {
     this.setData({
       currentNavbar: e.currentTarget.dataset.idx
     })
-    if (e.currentTarget.dataset.idx == 1 && this.data.latest_list.length == 0) {
+    if (e.currentTarget.dataset.idx == 1 && this.data.items_list.length == 0) {
       this.pullUpLoadLatest()
     }
   },
@@ -79,7 +108,7 @@ Page({
         break
       case '1':
         this.setData({
-          latest_list: [],
+          items_list: [],
           latest_list_id: 0
         })
         this.pullUpLoadLatest()
@@ -111,11 +140,11 @@ Page({
    */
   pullUpLoadLatest () {
     wx.showNavigationBarLoading()
-    api.get(api.HOST_IOS + api.LATEST + '?last_id=' + this.data.latest_last_id)
+    api.get(api.HOST_IOS + api.LATEST + '?last_id=' + this.data.items_last_id)
       .then(res => {
         this.setData({
-          latest_list: this.data.latest_list.concat(res.data.list),
-          latest_last_id: res.data.last_id
+          items_list: this.data.items_list.concat(res.data.list),
+          items_last_id: res.data.last_id
         })
         wx.hideNavigationBarLoading()
         wx.stopPullDownRefresh()

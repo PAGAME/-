@@ -3,6 +3,7 @@ import Promise from './es6-promise.min'
 
 module.exports = {
   PAGE_WORK: '/pages/work-detail/work-detail',
+  PAGE_ITEM: '/pages/item-detail/item-detail',
 
   HOST_WORK: 'https://work.artand.cn/',
   HOST_HEAD: 'https://head.artand.cn/',

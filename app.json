@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/item-detail/item-detail",
     "pages/work-detail/work-detail",
     "pages/discover/discover",
     "pages/setting/setting",
@@ -9,29 +10,31 @@
     "pages/qrcode/qrcode"
   ],
   "window":{
-    "backgroundTextStyle": "black",
-    "navigationBarBackgroundColor": "white",
+    "backgroundTextStyle": "white",
+    "navigationBarBackgroundColor": "#c6ae9b",
     "navigationBarTitleText": "桃花小集",
-    "navigationBarTextStyle": "black",
+    "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "white",
-    "backgroundColor": "rgba(0,0,0,0.90)",
+    "backgroundColor": "rgba(47, 40, 42, 200)",
     "borderStyle": "black",
     "list": [{
         "pagePath": "pages/index/index",
-        "iconPath": "images/bar_home_black.png",
-        "selectedIconPath": "images/bar_home.png"
+        "iconPath": "images/bar_explore_black.png",
+        "selectedIconPath": "images/bar_explore.png"
       }, {
-      "pagePath": "pages/discover/discover",
-      "iconPath": "images/bar_explore_black.png",
-      "selectedIconPath": "images/bar_explore.png"
-    }, {
-      "pagePath": "pages/setting/setting",
+      "pagePath": "pages/login/login",
       "iconPath": "images/bar_mine_black.png",
       "selectedIconPath": "images/bar_mine.png"
     }]
+  },
+  "networkTimeout": {
+    "request": 5000,
+    "connectSocket": 5000,
+    "uploadFile": 5000,
+    "downloadFile": 5000
   },
   "debug": true
 }

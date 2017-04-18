@@ -7,19 +7,19 @@
     flex: 1.0;
     text-align: center;
     font-size: 14px;
-    color: #999;
     margin-bottom: -1px;
+    color: #817671;
 }
 .navbar-text {
     display: block;
-    width: 30px;
     padding: 10px;
     margin: auto;
 }
 .navbar-text.active {
     border-bottom: 2px solid #000;
-    color: #000;
     font-weight: bold;
+    color: #FAF0EC;
+    background: #A99B93;
 }
 .hidden {
     display: none;
@@ -47,7 +47,7 @@
     right: 0px;
     bottom: 2px;
     padding: 25px 15px 15px;
-    background-image: linear-gradient(transparent, rgba(0,0,0,0.8));
+    background-image: linear-gradient(transparent, rgba(135,110,90,255));
 }
 .hot-item-title {
     display: block;
