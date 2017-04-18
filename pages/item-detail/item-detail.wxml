@@ -28,4 +28,16 @@
     <text class="work-desc-title">创作手记</text>
     <text>{{work.desc}}</text>
   </view>
+  <button formType="submit"
+          size="mini"
+          plain="true"
+          class="buy-btn"
+          hover-class="other-button-hover"
+          hover-class="btn-hover"> 购 买 </button>
+  <button formType="submit"
+          size="mini"
+          plain="true"
+          class="buy-btn"
+          hover-class="other-button-hover"
+          hover-class="btn-hover"> 加入购物车 </button>
 </view>
